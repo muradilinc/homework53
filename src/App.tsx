@@ -15,7 +15,7 @@ const App = () => {
     {id: uuid(), taskText: 'Walk with dog', statusTask: false},
     {id: uuid(), taskText: 'Do homework', statusTask: false},
   ]);
-  const [taskText, setTaskText] = useState('');
+  const [taskText, setTaskText] = useState<string>('');
 
   const addText = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTaskText(event.target.value);
@@ -35,6 +35,13 @@ const App = () => {
   };
 
 
+  const deleteTask = (id: string) => {
+    const tasksArray = [...tasks];
+    const removedTask =  tasksArray.filter(task => task.id !== id);
+
+    setTasks(removedTask);
+  };
+
   return (
     <div className="container mx-auto my-5">
       <AddTaskForm
@@ -43,7 +50,7 @@ const App = () => {
         addButton={addTask}/>
       {
         tasks.map(task => {
-          return <Task key={task.id} {...task}/>;
+          return <Task key={task.id} {...task} deleteButton={() => deleteTask(task.id)}/>;
         })
       }
     </div>
