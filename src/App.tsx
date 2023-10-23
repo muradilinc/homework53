@@ -3,13 +3,17 @@ import AddTaskForm from './component/AddTaskForm/AddTaskForm.tsx';
 import Task from './component/Task/Task.tsx';
 
 interface Task {
-  id: Date;
+  id: string;
   taskText: string;
   statusTask: boolean;
 }
 
 const App = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([
+    {id: new Date().toString(), taskText: 'Byu milk', statusTask: false},
+    {id: new Date().toString(), taskText: 'Walk with dog', statusTask: false},
+    {id: new Date().toString(), taskText: 'Do homework', statusTask: false},
+  ]);
   const [taskText, setTaskText] = useState('');
 
   const addText = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +22,7 @@ const App = () => {
 
   const addTask = () => {
     const task: Task = {
-      id: new Date(),
+      id: new Date().toString(),
       taskText,
       statusTask: false
     };
