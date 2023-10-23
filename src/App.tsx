@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { v4 as uuid } from 'uuid';
+import {v4 as uuid} from 'uuid';
 import AddTaskForm from './component/AddTaskForm/AddTaskForm.tsx';
 import Task from './component/Task/Task.tsx';
 
@@ -37,20 +37,41 @@ const App = () => {
 
   const deleteTask = (id: string) => {
     const tasksArray = [...tasks];
-    const removedTask =  tasksArray.filter(task => task.id !== id);
+    const removedTask = tasksArray.filter(task => task.id !== id);
 
     setTasks(removedTask);
   };
+
+  const changeStatus = (id: string) => {
+    const tasksArray = [...tasks];
+
+    tasksArray.map(task => {
+      if (task.id === id) {
+        task.statusTask = true;
+      }
+
+      return task;
+    });
+
+    setTasks(tasksArray);
+  };
+
 
   return (
     <div className="container mx-auto my-5">
       <AddTaskForm
         text={taskText}
         onChangeText={(event) => addText(event)}
-        addButton={addTask}/>
+        addButton={addTask}
+      />
       {
         tasks.map(task => {
-          return <Task key={task.id} {...task} deleteButton={() => deleteTask(task.id)}/>;
+          return <Task
+            key={task.id}
+            {...task}
+            deleteButton={() => deleteTask(task.id)}
+            onChangeStatus={() => changeStatus(task.id)}
+          />;
         })
       }
     </div>
