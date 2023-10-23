@@ -36,7 +36,11 @@ const App = () => {
         text={taskText}
         onChangeText={(event) => addText(event)}
         addButton={addTask}/>
-      <Task/>
+      {
+        tasks.map(task => {
+          return <Task key={task.id} {...task}/>;
+        })
+      }
     </div>
   );
 };
