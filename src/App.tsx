@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { v4 as uuid } from 'uuid';
 import AddTaskForm from './component/AddTaskForm/AddTaskForm.tsx';
 import Task from './component/Task/Task.tsx';
 
@@ -10,9 +11,9 @@ interface Task {
 
 const App = () => {
   const [tasks, setTasks] = useState<Task[]>([
-    {id: new Date().toString(), taskText: 'Byu milk', statusTask: false},
-    {id: new Date().toString(), taskText: 'Walk with dog', statusTask: false},
-    {id: new Date().toString(), taskText: 'Do homework', statusTask: false},
+    {id: uuid(), taskText: 'Byu milk', statusTask: false},
+    {id: uuid(), taskText: 'Walk with dog', statusTask: false},
+    {id: uuid(), taskText: 'Do homework', statusTask: false},
   ]);
   const [taskText, setTaskText] = useState('');
 
@@ -22,7 +23,7 @@ const App = () => {
 
   const addTask = () => {
     const task: Task = {
-      id: new Date().toString(),
+      id: uuid(),
       taskText,
       statusTask: false
     };
