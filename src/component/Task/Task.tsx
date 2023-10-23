@@ -9,7 +9,7 @@ interface Props {
 
 const Task: React.FC<Props> = ({taskText, statusTask, deleteButton, onChangeStatus}) => {
   return (
-    <div className={`border mt-4 flex justify-between p-4 ${statusTask ? 'bg-green-500' : 'bg-white'}`}>
+    <div className={`border rounded-2xl mt-4 flex justify-between p-4 ${statusTask ? 'bg-green-500' : 'bg-white'}`}>
       <div className='flex items-center'>
         <div className="flex items-center mr-4">
           <input onChange={onChangeStatus} checked={statusTask} id="green-checkbox" type="checkbox" className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
