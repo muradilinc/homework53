@@ -1,4 +1,5 @@
 import React from 'react';
+import {Trash} from '@phosphor-icons/react';
 interface Props {
   taskText: string;
   deleteButton: React.MouseEventHandler;
@@ -10,7 +11,7 @@ const Task: React.FC<Props> = ({taskText, deleteButton, onChangeStatus}) => {
     <div className='border mt-4'>
       <input type="checkbox" onChange={onChangeStatus}/>
       <h1>{taskText}</h1>
-      <button onClick={deleteButton}>delete</button>
+      <button onClick={deleteButton}><Trash size={32}/></button>
     </div>
   );
 };
