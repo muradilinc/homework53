@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import AddTaskForm from './component/AddTaskForm/AddTaskForm.tsx';
 import Task from './component/Task/Task.tsx';
 
@@ -10,11 +10,16 @@ interface Task {
 
 const App = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [taskText, setTaskText] = useState('');
+
+  const addText = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTaskText(event.target.value);
+  };
 
   const addTask = () => {
     const task: Task = {
       id: new Date(),
-      taskText: 'Cook cakes',
+      taskText,
       statusTask: false
     };
 
@@ -24,11 +29,13 @@ const App = () => {
     setTasks(taskArray);
   };
 
-  console.log(tasks);
 
   return (
     <div className="container mx-auto my-5">
-      <AddTaskForm addButton={addTask}/>
+      <AddTaskForm
+        text={taskText}
+        onChangeText={(event) => addText(event)}
+        addButton={addTask}/>
       <Task/>
     </div>
   );

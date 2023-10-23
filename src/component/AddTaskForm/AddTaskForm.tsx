@@ -1,16 +1,19 @@
 import React from 'react';
 
 interface Props {
+  text: string;
   addButton: React.MouseEventHandler;
+  onChangeText: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const AddTaskForm: React.FC<Props> = ({addButton}) => {
+const AddTaskForm: React.FC<Props> = ({text, onChangeText, addButton}) => {
   return (
     <React.Fragment>
       <form>
-        <label htmlFor="search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
         <div className="relative">
-          <input type="search" id="search"
+          <input type="text" id="task"
+                 value={text}
+                 onChange={onChangeText}
                  className="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                  placeholder="Hacking Nasa..." required/>
           <button type="button"
