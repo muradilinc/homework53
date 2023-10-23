@@ -11,7 +11,7 @@ interface Task {
 
 const App = () => {
   const [tasks, setTasks] = useState<Task[]>([
-    {id: uuid(), taskText: 'Byu milk', statusTask: false},
+    {id: uuid(), taskText: 'Byu milk', statusTask: true},
     {id: uuid(), taskText: 'Walk with dog', statusTask: false},
     {id: uuid(), taskText: 'Do homework', statusTask: false},
   ]);
@@ -47,7 +47,7 @@ const App = () => {
 
     tasksArray.map(task => {
       if (task.id === id) {
-        task.statusTask = true;
+        task.statusTask = !task.statusTask;
       }
 
       return task;
