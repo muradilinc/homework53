@@ -8,7 +8,7 @@ interface Props {
 
 const AddTaskForm: React.FC<Props> = ({text, onChangeText, addButton}) => {
   return (
-    <React.Fragment>
+    <>
       <form>
         <div className="relative">
           <input type="text" id="task"
@@ -22,7 +22,7 @@ const AddTaskForm: React.FC<Props> = ({text, onChangeText, addButton}) => {
           </button>
         </div>
       </form>
-    </React.Fragment>
+    </>
   );
 };
 

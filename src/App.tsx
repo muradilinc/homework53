@@ -36,24 +36,29 @@ const App = () => {
 
 
   const deleteTask = (id: string) => {
-    const tasksArray = [...tasks];
-    const removedTask = tasksArray.filter(task => task.id !== id);
-
-    setTasks(removedTask);
+    setTasks(tasks.filter(task => task.id !== id));
   };
 
   const changeStatus = (id: string) => {
-    const tasksArray = [...tasks];
+    // const tasksArray = tasks.map(task => {
+    //   const copyObj = {...task};
+    //   if (copyObj.id === id) {
+    //     copyObj.statusTask = !copyObj.statusTask;
+    //   }
+    //
+    //   return copyObj;
+    // });
 
-    tasksArray.map(task => {
-      if (task.id === id) {
-        task.statusTask = !task.statusTask;
-      }
+    setTasks(prevState => {
+      return prevState.map(task => {
+        const copyObj = {...task};
+        if (copyObj.id === id) {
+          copyObj.statusTask = !copyObj.statusTask;
+        }
 
-      return task;
+        return copyObj;
+      });
     });
-
-    setTasks(tasksArray);
   };
 
 
