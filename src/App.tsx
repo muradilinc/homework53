@@ -29,7 +29,9 @@ const App = () => {
     };
 
     const taskArray = [...tasks];
-    taskArray.push(task);
+    if (taskText !== ''){
+      taskArray.push(task);
+    }
 
     setTasks(taskArray);
   };
@@ -40,15 +42,6 @@ const App = () => {
   };
 
   const changeStatus = (id: string) => {
-    // const tasksArray = tasks.map(task => {
-    //   const copyObj = {...task};
-    //   if (copyObj.id === id) {
-    //     copyObj.statusTask = !copyObj.statusTask;
-    //   }
-    //
-    //   return copyObj;
-    // });
-
     setTasks(prevState => {
       return prevState.map(task => {
         const copyObj = {...task};
